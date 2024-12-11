@@ -31,6 +31,8 @@ mboot: ; used by GRUB to locate the kernel
     dd start
 
 stublet:
+    extern main
+    call main
     jmp $
 
 ; will add GDT and ISR tables later

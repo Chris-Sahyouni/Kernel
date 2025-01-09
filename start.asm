@@ -35,7 +35,21 @@ stublet:
     call main
     jmp $
 
-; will add GDT and ISR tables later
+; declared in gdt.c
+global gdt_flush ; allows c code to link this
+extern gdt_ptr
+gdt_flush:
+    lgdt [gdt_ptr]
+    mov ax, 0x10 ; offset to data segment
+    mov ds, ax
+    mov es, ax
+    mov fs, ax
+    mov gs, ax
+    mov ss, ax
+    jmp 0x08:flush2 ; offset to code segment
+flush2:
+    ret ; return to c code
+
 
 ; BSS section definition
 ;   - the BSS section stores uninitialized data,

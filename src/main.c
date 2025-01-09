@@ -43,5 +43,7 @@ void outportb(unsigned short _port, unsigned char _data) {
 }
 
 void main() {
+    init_video();
+    put_str("test");
     for (;;);
 }

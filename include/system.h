@@ -20,4 +20,8 @@ extern void init_video();
 extern void gdt_install();
 extern void gdt_set_gate(int index, unsigned long base, unsigned long limit, unsigned char access, unsigned char gran);
 
+// idt.c
+extern void idt_install();
+extern void idt_set_gate(int index, unsigned long base, unsigned short sel, unsigned char flags);
+
 #endif

@@ -35,7 +35,7 @@ stublet:
     call main
     jmp $
 
-; declared in gdt.c
+; Global Descriptor Table
 global gdt_flush ; allows c code to link this
 extern gdt_ptr
 gdt_flush:
@@ -50,6 +50,12 @@ gdt_flush:
 flush2:
     ret ; return to c code
 
+; Interrupt Descriptor Table
+global idt_load
+extern idt_ptr
+idt_load:
+    lidt [idt_ptr]
+    ret
 
 ; BSS section definition
 ;   - the BSS section stores uninitialized data,

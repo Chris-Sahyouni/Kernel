@@ -51,6 +51,7 @@ void main() {
     __asm__ __volatile__("sti");
 
     timer_install();
+    keyboard_install();
 
     init_video();
 

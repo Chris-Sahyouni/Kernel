@@ -19,6 +19,7 @@ struct idt_pointer idt_ptr;
 
 extern void idt_load();
 
+// base is the address of the service routine
 void idt_set_gate(int index, unsigned long base, unsigned short sel, unsigned char flags) {
     idt[index].service_routine_addr_lo = base & 0xffff;
     idt[index].service_routine_addr_hi = (base >> 16) & 0xffff;

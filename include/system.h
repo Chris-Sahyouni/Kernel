@@ -24,4 +24,15 @@ extern void gdt_set_gate(int index, unsigned long base, unsigned long limit, uns
 extern void idt_install();
 extern void idt_set_gate(int index, unsigned long base, unsigned short sel, unsigned char flags);
 
+// isrs.c
+extern void isrs_install();
+
+// defines how our stack looked after an ISR has run
+struct registers {
+    unsigned int gs, fs, es, ds;      /* pushed the segs last */
+    unsigned int edi, esi, ebp, esp, ebx, edx, ecx, eax;  /* pushed by 'pusha' */
+    unsigned int interrupt_num, err_code;    /* our 'push byte #' and error codes do this */
+    unsigned int eip, cs, eflags, useresp, ss;   /* pushed by the processor automatically */
+};
+
 #endif

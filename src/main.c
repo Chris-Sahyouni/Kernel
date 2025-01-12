@@ -45,7 +45,11 @@ void outportb(unsigned short _port, unsigned char _data) {
 void main() {
     gdt_install();
     idt_install();
+    isrs_install();
     init_video();
-    put_str("test");
+    // for testing exceptions
+    // int a = 4 / 0;
+    // put_char(a);
+    put_str("Booted Successfully");
     for (;;);
 }

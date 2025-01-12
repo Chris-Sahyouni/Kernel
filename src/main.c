@@ -46,10 +46,16 @@ void main() {
     gdt_install();
     idt_install();
     isrs_install();
+    irq_install();
+    // now that IRQs are installed we can re-enable them
+    __asm__ __volatile__("sti");
+
     init_video();
+
     // for testing exceptions
     // int a = 4 / 0;
     // put_char(a);
+
     put_str("Booted Successfully");
     for (;;);
 }

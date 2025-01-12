@@ -27,6 +27,11 @@ extern void idt_set_gate(int index, unsigned long base, unsigned short sel, unsi
 // isrs.c
 extern void isrs_install();
 
+// irq.c
+extern void irq_install();
+extern void irq_install_handler();
+extern void irq_uninstall_handler();
+
 // defines how our stack looked after an ISR has run
 struct registers {
     unsigned int gs, fs, es, ds;      /* pushed the segs last */

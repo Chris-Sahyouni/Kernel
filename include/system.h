@@ -32,6 +32,9 @@ extern void irq_install();
 extern void irq_install_handler();
 extern void irq_uninstall_handler();
 
+// timer.c
+extern void timer_install();
+
 // defines how our stack looked after an ISR has run
 struct registers {
     unsigned int gs, fs, es, ds;      /* pushed the segs last */

@@ -50,6 +50,8 @@ void main() {
     // now that IRQs are installed we can re-enable them
     __asm__ __volatile__("sti");
 
+    timer_install();
+
     init_video();
 
     // for testing exceptions
